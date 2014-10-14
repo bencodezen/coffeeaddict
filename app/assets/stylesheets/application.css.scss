@@ -16,6 +16,14 @@ h2 {
   margin: 0px;
 }
 
+a {
+  text-decoration: none;
+}
+
+a:visited {
+  color: #000;
+}
+
 /* Layout */
 
 .center-block {
