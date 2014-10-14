@@ -1,28 +1,25 @@
 class LocationsController < ApplicationController
-  before_action :set_location, only: [:show, :edit, :update, :destroy]
+  before_action :set_location, only: [:show, :update, :destroy]
 
-  # GET /locations
-  # GET /locations.json
   def index
     @locations = Location.all
   end
 
-  # GET /locations/1
-  # GET /locations/1.json
   def show
+    require 'open-uri'
+    require 'json'
+
+    url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=#{@location.latitude},#{@location.longitude}&rankby=distance&keyword=coffee%20shops&key=#{api_key}"
+    google_request = open(url).read
+    initial_parse = JSON.parse google_request
+    @nearby_shops = initial_parse["results"].first(10)
+    @api_key = api_key
   end
 
-  # GET /locations/new
   def new
     @location = Location.new
   end
 
-  # GET /locations/1/edit
-  def edit
-  end
-
-  # POST /locations
-  # POST /locations.json
   def create
     @location = Location.new(location_params)
 
@@ -37,8 +34,6 @@ class LocationsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /locations/1
-  # PATCH/PUT /locations/1.json
   def update
     respond_to do |format|
       if @location.update(location_params)
@@ -51,8 +46,6 @@ class LocationsController < ApplicationController
     end
   end
 
-  # DELETE /locations/1
-  # DELETE /locations/1.json
   def destroy
     @location.destroy
     respond_to do |format|
@@ -62,13 +55,15 @@ class LocationsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_location
       @location = Location.find(params[:id])
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
     def location_params
       params.require(:location).permit(:address, :latitude, :longitude)
+    end
+
+    def api_key
+      "AIzaSyCQHFb2KhptVc4Lnqsj4jOu44wHv5zzlWY"
     end
 end
