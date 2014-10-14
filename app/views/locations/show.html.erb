@@ -1,19 +1,21 @@
-<p id="notice"><%= notice %></p>
+<div class="container">
+  <%= render "header" %>
+  <%= render "form" %>
 
-<p>
-  <strong>Address:</strong>
-  <%= @location.address %>
-</p>
+  <div class="row" id="search-results">
+    <% count = 0 %>
+    <% @nearby_shops.each do |shop| %>
+      <% count += 1 %>
+      <div class="shop-block">
+        <div class="shop-id">
+          <p>#<%= count %></p>
+        </div>
+        <div class="shop-description">
+          <h2><%= shop["name"] %></h2>
+          <p><%= shop["vicinity"] %></p>
+        </div>
+      </div>
+    <% end %>  
+  </div>
 
-<p>
-  <strong>Latitude:</strong>
-  <%= @location.latitude %>
-</p>
-
-<p>
-  <strong>Longitude:</strong>
-  <%= @location.longitude %>
-</p>
-
-<%= link_to 'Edit', edit_location_path(@location) %> |
-<%= link_to 'Back', locations_path %>
+</div>

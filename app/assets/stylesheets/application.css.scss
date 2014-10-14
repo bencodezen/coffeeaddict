@@ -13,7 +13,7 @@ h2, h3, h4, h5, h6, p, small {
 h2 {
   font-size: 1.4em;
   font-weight: 700;
-  margin-top: 0;
+  margin: 0px;
 }
 
 /* Layout */
@@ -69,7 +69,7 @@ h2 {
 
 .form-wrapper input {
     width: 560px;
-    height: 40px;
+    height: 20px;
     padding: 10px 5px;
     float: left;    
     font: 15px 'Open Sans', sans-serif;
@@ -106,7 +106,7 @@ h2 {
     font-style: italic;
 }    
 
-.form-wrapper button {
+.form-wrapper input#search-button {
 overflow: visible;
     position: relative;
     float: right;
@@ -125,12 +125,12 @@ overflow: visible;
     text-shadow: 0 -1px 0 rgba(0, 0 ,0, .3);
 }   
   
-.form-wrapper button:hover{   
+.form-wrapper input#search-button:hover{   
     background: #e54040;
 } 
   
-.form-wrapper button:active,
-.form-wrapper button:focus{   
+.form-wrapper input#search-button:active,
+.form-wrapper input#search-button:focus{   
     background: #c42f2f;    
 }
 
@@ -197,6 +197,10 @@ div.shop-id p {
   position: relative;
   margin: 0 auto;
   border-radius: 15px;
+}
+
+.shop-description p {
+  margin-top: 5px;
 }
 
 div.break {
