@@ -1,7 +1,7 @@
-class Location < ActiveRecord::Base
-  require 'open-uri'
-  require 'json'
+require 'open-uri'
+require 'json'
 
+class Location < ActiveRecord::Base
   geocoded_by :address
   after_validation :geocode, :if => :address_changed?
 
