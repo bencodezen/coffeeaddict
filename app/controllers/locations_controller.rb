@@ -1,10 +1,6 @@
 class LocationsController < ApplicationController
   before_action :set_location, only: [:show, :update, :destroy]
 
-  def index
-    @location = Location.new
-  end
-
   def show
     require 'open-uri'
     require 'json'
@@ -43,14 +39,6 @@ class LocationsController < ApplicationController
         format.html { render action: 'edit' }
         format.json { render json: @location.errors, status: :unprocessable_entity }
       end
-    end
-  end
-
-  def destroy
-    @location.destroy
-    respond_to do |format|
-      format.html { redirect_to locations_url }
-      format.json { head :no_content }
     end
   end
 
