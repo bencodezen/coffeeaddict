@@ -1,6 +1,6 @@
 ## CoffeeAddict
 
-A simple app that allows users to enter any address and find the ten closest coffee shops!
+A simple web app that allows users to enter any address and find the ten closest coffee shops!
 
 Check out the [live demo](http://coffeeaddict.herokuapp.com)!
 
